@@ -1,0 +1,51 @@
+@mixin bg-color($type) {
+    background-color: map-get($typecolors, $type);
+}
+
+@mixin button-style {
+    background-color: $bg-color-tertiary;
+    border-radius: 15px;
+    color: $text-color-primary;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 8px;
+}
+
+@mixin card-style {
+    border-color: $card-border-color;
+    border-radius: $card-border-radius;
+    border-style: $card-border-style;
+    border-width: $card-border-width;    
+    font-family: $font-family-primary;
+    max-width: 1200px;
+    min-height: $card-height;
+    min-width: $card-width;
+}
+
+@mixin flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+@mixin flexcol {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin type-color($type) {
+    color: map-get($typecolors, $type);
+}
+
+@mixin responsive-tablet {
+    @media screen and (min-width: $bp-tablet) {
+        @content;
+    }
+}
+
+@mixin reset {
+    margin: 0;
+    padding: 0;
+}

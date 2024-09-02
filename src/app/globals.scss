@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import "../styles/variables";
+@import "../styles/mixins";
+
+html, body {
+    @include reset;
+    height: 100%;
+}
+
+body {
+    @include flexcol;
+    height: 100vh;
+    font-family: $font-family-primary;
+}
+
+.layout {
+    &__header, &__footer {
+    @include flex-center;
+
+        &-content {
+        @include flex-center;
+            height: 200px;
+            text-align: center;
+        }
+    }
+    
+    &__header {
+        background-color: $bg-color-secondary;
+
+        &-content-logo {
+            position: relative;
+            width: 90%;
+            height: calc(100% - $p-small);
+        }
+    }
+
+    &__footer {
+        @include responsive-tablet {
+            font-size: 1.5rem;
+        }
+
+        background-color: $bg-color-primary;
+        color: $text-color-primary;
+    }
+
+}
+
+.pokecard-container {
+    @include flexcol;
+    align-items: center;
+    flex: 1;
+    margin: $m-big 0;
+
+    h1 {
+        font-size: 1.8rem;
+        padding: $p-medium;
+        text-align: center;
+    }
+
+    &__button {
+        @include responsive-tablet {
+            margin-top: $m-medium;
+            padding: $p-medium;
+        }
+        @include button-style
+    }
+}
+
+.pokecard {
+    @include card-style;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    text-align: center;
+    margin-bottom: $m-medium;
+
+    &__header {
+        h2 {
+            margin: 0;
+        }
+
+        @each $type, $color in $typecolors {
+            &--#{$type} {
+                @include bg-color($type);
+            }
+        }
+    }
+
+    &__image-container {
+
+        background-color: #f0f0f0;
+
+        img {
+            width: 200px;
+            height: auto;
+        }
+    }
+
+    &__details {
+        text-align: left;
+        padding: $p-small;
+
+        &-id {
+            font-weight: bold;
+        }
+
+        &-type {
+            @each $type, $color in $typecolors {
+                &--#{$type} {
+                    @include type-color($type);
+                }
+            }
+        }
+
+        &-stats {
+            padding: $p-small;
+            text-align: center;
+        }
+    }
+}
